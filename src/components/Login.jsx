@@ -1,7 +1,7 @@
 function Login ({clicked}){
 
 const handleclick = (buttonName) => {
-    console.log(`Button is ${buttonName}`);
+    // console.log(`Button is ${buttonName}`);
         
     clicked(buttonName);
 };

@@ -8,15 +8,16 @@ import Spinner from "./Spinner";
 
   function Home(){
 
+
     const [fetching , setfetching] =useState(false);
-
-
     const [posts, setPosts] = useState([]);
 
 useEffect(() => {
+  const controler =new AbortController();
+  const {signal} = controler
   setfetching(true);
   // Fetch data on component mount
-  fetch('https://dummyjson.com/posts')
+  fetch('https://dummyjson.com/posts ' , {signal})
     .then(res => res.json())
     .then(data => {
       // Map the fetched data to the desired structure
@@ -28,13 +29,32 @@ useEffect(() => {
         views: post.views,
         reactions: post.reactions,
       }));
-      console.log("array data", postsArray)
+      // console.log("array data", postsArray)
       setPosts(postsArray); // Update state with the fetched data
       setfetching(false);
 
     })
-    .catch(error => console.error('Error fetching data:', error));
-}, []); 
+    // .catch(error => console.error('Error fetching data:', error));
+    // return(()=>{
+    //   console.log('cleaning uo use effect');
+    //   controler.abort();
+      
+    // })
+    .catch(error => {
+      
+      if (error.name === 'AbortError') {
+        console.log('Fetch aborted');
+      } else {
+        console.error('Error fetching data:', error);
+      }
+    
+    });
+    return () => {
+      console.log('Cleaning up useEffect');
+      controler.abort();
+    };
+  
+}, []);
 
 
 

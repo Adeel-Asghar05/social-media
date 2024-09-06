@@ -3,7 +3,7 @@ import { useState } from "react";
 function Side({clicked}){
 
   const handleclick = (buttonName) => {
-    console.log(`Button is ${buttonName}`);
+    // console.log(`Button is ${buttonName}`);
     
     clicked(buttonName);
   };

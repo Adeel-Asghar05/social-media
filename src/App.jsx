@@ -9,7 +9,6 @@ function App() {
   let [selectedbutn ,setval]=useState("Home");
 
     let handleButton =(buttonname)=>{
-          console.log('buton clicked in app',buttonname);    
     setval(buttonname);
   }
 
