@@ -13,13 +13,11 @@ function App() {
   }
 
   return (
-    <div >
+    <div className='bg-[#394449]' >
     <Navbar clicked={handleButton} ></Navbar>
-
 
       <div className={`flex ${selectedbutn!="Home" ? "h-screen" : ""}`}>
         <Side clicked={handleButton}></Side>
-
 
         <div className={`  flex justify-center w-full h-[vh]  bg-[#394449]`}>
 

@@ -16,9 +16,6 @@ function Side({clicked}){
         Home
           </button>
 
-
-        
-
       <button className="items-center text-lg text-white focus:bg-blue-600 focus:text-black py-1 px-2 mx-4
         mt-4 border-2 border-transparent rounded-lg font-medium "
             onClick={()=>handleclick("Creat-post")} >

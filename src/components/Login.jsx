@@ -1,13 +1,9 @@
 function Login ({clicked}){
 
 const handleclick = (buttonName) => {
-    // console.log(`Button is ${buttonName}`);
-        
+
     clicked(buttonName);
 };
-
-
-
 
 return(
   <div className="mt-40 rounded-xl h-[420px] bg-[#3B494F] text-white font-medium shadow-black shadow-2xl" >

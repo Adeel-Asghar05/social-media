@@ -1,11 +1,8 @@
-
 import { CiSearch } from "react-icons/ci";
 
 function Navbar({clicked}){
 
-
 const handleclick = (buttonName) => {
-  // console.log(`Button is ${buttonName}`);
       
   clicked(buttonName);
 };
@@ -38,8 +35,6 @@ const handleclick = (buttonName) => {
   </div>
 )
 };
-
-
 
 
 export default Navbar;

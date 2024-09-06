@@ -4,10 +4,8 @@ import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
 import { LuEye } from "react-icons/lu";
 import Spinner from "./Spinner";
-// 
 
   function Home(){
-
 
     const [fetching , setfetching] =useState(false);
     const [posts, setPosts] = useState([]);
@@ -34,12 +32,6 @@ useEffect(() => {
       setfetching(false);
 
     })
-    // .catch(error => console.error('Error fetching data:', error));
-    // return(()=>{
-    //   console.log('cleaning uo use effect');
-    //   controler.abort();
-      
-    // })
     .catch(error => {
       
       if (error.name === 'AbortError') {
@@ -56,9 +48,6 @@ useEffect(() => {
   
 }, []);
 
-
-
-
   return (
     <>
     {fetching && <Spinner/>}
@@ -70,18 +59,9 @@ useEffect(() => {
               {item.title}
             </div>
 
-
-
             <div className="text-lg text-blue-100 mb-2">
               {item.body}
             </div>
-
-            {/* <div className="text-gray-400 mb-2">
-            Views : {item.views}
-            </div> */}
-
-
-
 
             <div className="flex flex-wrap gap-2 mb-2">
               {item.tags.map((tag, index) => (
@@ -90,10 +70,7 @@ useEffect(() => {
                 </button>
               ))}
 
-
-
             </div>
-
 
             <div className="flex justify-between">
               <div className="flex gap-6 mt-2">
