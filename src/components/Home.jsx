@@ -3,14 +3,18 @@ import { useState ,useEffect} from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
 import { LuEye } from "react-icons/lu";
+import Spinner from "./Spinner";
 // 
 
   function Home(){
+
+    const [fetching , setfetching] =useState(false);
 
 
     const [posts, setPosts] = useState([]);
 
 useEffect(() => {
+  setfetching(true);
   // Fetch data on component mount
   fetch('https://dummyjson.com/posts')
     .then(res => res.json())
@@ -26,6 +30,8 @@ useEffect(() => {
       }));
       console.log("array data", postsArray)
       setPosts(postsArray); // Update state with the fetched data
+      setfetching(false);
+
     })
     .catch(error => console.error('Error fetching data:', error));
 }, []); 
@@ -34,6 +40,8 @@ useEffect(() => {
 
 
   return (
+    <>
+    {fetching && <Spinner/>}
     <div className="  w-[600px] mt-20 rounded-2xl -ml-20 ">
       <div className=" my-8 mx-12 gap-4 flex flex-col ">
         {posts.map(item => (
@@ -90,6 +98,7 @@ useEffect(() => {
         ))}
       </div>
     </div>
+    </>
   );
 
 };
