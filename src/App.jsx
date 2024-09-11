@@ -1,37 +1,46 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import Side from './components/Side'
-import Home from './components/Home'
-import Login from './components/Login'
-import Signup from './components/Signup'
+
+
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Side from './components/Side';
+import Home from './components/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Adpost from './components/Adpost';
+import { PostProvider } from './components/Store';
+
 function App() {
+  const [selectedButn, setSelectedButn] = useState("Home");
 
-  let [selectedbutn ,setval]=useState("Home");
+  const handleButton = (buttonName) => {
+    setSelectedButn(buttonName);
+  };
 
-    let handleButton =(buttonname)=>{
-    setval(buttonname);
-  }
+  const handlePostSuccess = () => {
+    setSelectedButn("Home"); // Navigate to Home page on successful post
+  };
 
   return (
-    <div className='bg-[#394449]' >
-    <Navbar clicked={handleButton} ></Navbar>
+    <PostProvider>
+      <div className='bg-[#394449]'>
+        <Navbar clicked={handleButton} />
 
-      <div className={`flex ${selectedbutn!="Home" ? "h-screen" : ""}`}>
-        <Side clicked={handleButton}></Side>
+        <div className={`flex ${selectedButn !== "Home" ? "h-screen" : ""}`}>
+          <Side clicked={handleButton} />
 
-        <div className={`  flex justify-center w-full h-[vh]  bg-[#394449]`}>
-
-        {selectedbutn==="Login" &&<Login  clicked={handleButton} ></Login>}
-        {selectedbutn==="Signup" &&<Signup  clicked={handleButton} />}
-
-        {selectedbutn==="Home" &&<Home  clicked={handleButton} ></Home>}
-
+          <div className={`flex justify-center w-full h-[vh] bg-[#394449]`}>
+            {selectedButn === "Login" && <Login clicked={handleButton} />}
+            {selectedButn === "Signup" && <Signup clicked={handleButton} />}
+            {selectedButn === "Home" && <Home clicked={handleButton} />}
+            {selectedButn === 'Creat-post' && <Adpost onPostSuccess={handlePostSuccess} />}
+          </div>
         </div>
-        </div>
-    </div>
-  )
+      </div>
+    </PostProvider>
+  );
 }
 
 export default App;
+
 
 
