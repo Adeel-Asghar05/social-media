@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
       {fetching && <Spinner />}
-      <div className="w-[600px] mt-20 rounded-2xl -ml-20">
+      <div className="w-[600px] mt-32 rounded-2xl -ml-20">
         <div className="my-8 mx-12 gap-4 flex flex-col">
           {posts.map(item => (
             <div key={item.id} className="shadow-black shadow-lg p-4 mb-4 rounded-lg">
@@ -25,7 +25,7 @@ function Home() {
 
               <div className="flex flex-wrap gap-2 mb-2">
                 {item.tags.map((tag, index) => (
-                  <button key={tag} className="bg-blue-500 text-white px-3 py-1 rounded-md">
+                  <button key={index} className="bg-blue-500 text-white px-3 py-1 rounded-md">
                     {tag}
                   </button>
                 ))}

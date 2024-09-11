@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 // Create Context with default values
+import { useNavigate } from 'react-router-dom';
 export const PostContext = createContext({
   posts: [],
   fetching: false,
@@ -9,6 +10,7 @@ export const PostContext = createContext({
 
 // Create a provider component
 export const PostProvider = ({ children }) => {
+  const navigate= useNavigate();
   const [posts, setPosts] = useState([]);
   const [fetching, setFetching] = useState(false);
 
@@ -66,11 +68,15 @@ export const PostProvider = ({ children }) => {
         ...prevPosts ,     
       ]);
 
+
       // .then(res => res.json())
       // .then(console.log);
+      navigate("/")
+
     } catch (error){
       console.error ("error adding post ", error);
     }
+
   };
 
   return (

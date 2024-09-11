@@ -1,11 +1,10 @@
-function Login ({clicked}){
+import { Link } from 'react-router-dom';
 
-const handleclick = (buttonName) => {
+function Login (){
 
-    clicked(buttonName);
-};
 
 return(
+  <div className="bg-[#3B498F h-screen" >
   <div className="mt-40 rounded-xl h-[420px] bg-[#3B494F] text-white font-medium shadow-black shadow-2xl" >
 
     <div action="" className="m-4 p-6 flex flex-col gap-5">
@@ -27,13 +26,13 @@ return(
 
       <p className=" text-white text-opacity-60 text-lg text-left ">
           Don't have an account ?
-            <button className="text-blue-500 hover:underline pl-4"
-                onClick={()=>handleclick("Signup")} 
+            <Link to="/sign-up" className="text-blue-500 hover:underline pl-4"
                 >Register
-            </button>
+            </Link>
       </p>
     
     </div>
+  </div>
   </div>
 
 )
